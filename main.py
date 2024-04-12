@@ -15,6 +15,7 @@ html = '''
     font-size: 24px; 
     background-color: #333; /* Dark background color */
     color: #fff; /* Light text color */
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
   }
