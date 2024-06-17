@@ -13,6 +13,11 @@ html = '''
 <style>
   body {
     font-size: 24px; 
+    background-color: #333; /* Dark background color */
+    color: #fff; /* Light text color */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
   }
 
   h1 {
@@ -23,6 +28,15 @@ html = '''
     font-size: 20px; 
   }
 
+  .calculator-container {
+    max-width: 600px; /* Maximum width for responsiveness */
+    margin: 50px auto; /* Center the calculator */
+    padding: 20px;
+    background-color: #444; /* Darker background color */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Box shadow for depth */
+  }
+
   .loading-spinner {
     border: 8px solid #f3f3f3;
     border-top: 8px solid #34db3f;
@@ -31,6 +45,7 @@ html = '''
     height: 150px; 
     animation: spin 2s linear infinite;
     display: none;
+    margin-top: 20px; /* Add margin to separate from input forms */
   }
 
   @keyframes spin {
@@ -40,22 +55,45 @@ html = '''
 
   .slow-image {
     display: none;
+    max-width: 100%; /* Make the image responsive */
+  }
+
+  /* Style input forms and button */
+  input[type="text"], button {
+    background-color: #555; /* Darker background color */
+    color: #fff; /* Light text color */
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px 0;
+    font-size: 24px;
+  }
+
+  button {
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  button:hover {
+    background-color: #666; /* Darker background color on hover */
   }
 </style>
 </head>
 <body>
 
-<h1>Calculator</h1>
-<p>This is a calculator. Please enter two numbers below and click "Calculate".</p>
+<div class="calculator-container">
+  <h1>Calculator</h1>
+  <p>This is a calculator. Please enter two numbers below and click "Calculate".</p>
 
-<div class="loading-spinner"></div>
+  <input type="text" id="firstNumber" placeholder="Enter first number">
+  <span> + </span>
+  <input type="text" id="secondNumber" placeholder="Enter second number"> 
+  <button onclick="calculate()">Calculate</button>
 
-<input type="text" id="firstNumber" style="font-size: 24px;" placeholder="Enter first number">
-<span style="font-size: 24px;"> + </span>
-<input type="text" id="secondNumber" style="font-size: 24px;" placeholder="Enter second number"> 
-<button onclick="calculate()" style="font-size: 24px;">Calculate</button>
+  <div class="loading-spinner"></div>
 
-<canvas class="slow-image" width="640" height="360"></canvas>
+  <canvas class="slow-image" width="640" height="360"></canvas>
+</div>
 
 <script>
 function calculate() {
@@ -73,7 +111,7 @@ function calculate() {
 
 function loadSlowImage() {
     var img = new Image();
-    img.src = "https://www.meme-arsenal.com/memes/8b955bf4c55ba0ae6f324087fd02777b.jpg"; 
+    img.src = "idk.jpg"; 
     img.onload = function() {
         var canvas = document.querySelector('.slow-image');
         var ctx = canvas.getContext('2d');
